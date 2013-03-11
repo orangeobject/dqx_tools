@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html>
+  <head>
+		<title>AIS 30 Days Later</title>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+		<style>
+			input {font-size:32px;}
+		</style>
+
+		<script type ="text/javascript">
+		
+var Lower_Limit = function(num){
+	LL = (num /  0.95) + 10;
+	LL = Math.ceil(LL);
+	document.getElementById("L_limit").value = LL;
+	//return LL;
+}
+
+</script>
+		</head>
+		<body bgcolor="#333333" text="#ffffff" >
+			<div style = "text-align:center;">
+				店売り価格を入力<br>
+				<input id=datepicker value="" onChange = "Lower_Limit(this.value);" ><br>
+				<br><br><br>
+				出品下限額は・・・<br>
+				<input id=L_limit > <span onClick="alert('間隔変更')"><br>
+					+option</span>
+				<p>出品下限額とは　＝　出品時に差し引かれる手数料を加味すると、店売りよりも損がでる最低ラインの価格です。<br>これ以下で出品するなら、店で売ったほうが利益がでます。</p>
+			</div>
+		</body>
+	</html>
