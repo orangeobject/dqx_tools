@@ -1,14 +1,17 @@
 <!doctype html>
 
 <html>
-  <head>
-		<title>DQX price Lower Limit checker</title>
+	<head>
+		<title>AIS 30 Days Later</title>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 
 		<style>
 			input {font-size:32px;}
+			body {font-size:62px;}
+			p{font-size:32px;}
+		
 		</style>
 
 		<script type ="text/javascript">
@@ -17,20 +20,50 @@ var Lower_Limit = function(num){
 	LL = (num /  0.95) + 10;
 	LL = Math.ceil(LL);
 	document.getElementById("L_limit").value = LL;
-	//return LL;
 }
+
+var riritsu = function(num){
+	//利益÷売上＝利益率
+	//利益＝売上－原価
+	//原価＝仕入れ値＋出品手数料
+
+	return null;
+	
+
+}
+
+var Hourly_wage = function(num,hour){
+	HW = num/hour;
+	return HW;
+}
+
 
 </script>
 		</head>
 		<body bgcolor="#333333" text="#ffffff" >
 			<div style = "text-align:center;">
+				<h1>下限価格確認</h1>
+
 				店売り価格を入力<br>
 				<input id=datepicker value="" onChange = "Lower_Limit(this.value);" ><br>
-				<br><br><br>
+				<br>
 				出品下限額は・・・<br>
-				<input id=L_limit > <span onClick="alert('間隔変更')"><br>
-					+option</span>
-				<p>出品下限額とは　＝　出品時に差し引かれる手数料を加味すると、店売りよりも損がでる最低ラインの価格です。<br>これ以下で出品するなら、店で売ったほうが利益がでます。</p>
+				<input id=L_limit >
+				<p>出品下限額とは</p>
+				<p>＝　出品時に差し引かれる手数料を加味すると、店売りよりも損がでる最低ラインの価格です。<br>これ以下で出品するなら、店で売ったほうが利益がでます。</p>
 			</div>
+
+			<div id=menu_links>
+				<li><a href='http://spe.eek.jp/dqx-dressup/'>みんなのドレスアップ</a>
+				<li><a href='http://www.d-quest-10.com/'>モンスター図鑑</a>
+				<li><a href='http://cpro.jp/dq10/skillsimulator/'>スキルシュミレータ</a>
+				<li><a href='http://grooowl.com/r/dqx/'>取引相場</a>
+				<li><a href='http://dqx.sighup.info/'>取引相場２</a>
+				<li><a href='http://xn--10-yg4a1a3kyh.jp/'>極限攻略データベース</a>
+
+			
+			</div>
+
+
 		</body>
 	</html>
