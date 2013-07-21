@@ -1,292 +1,427 @@
-#SAMPLE
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>職人補助ツール</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<style type=text/css>
+			.cell{background-color:white;width:100px;height:100px;color:gray;margin:5px;
+				float:left;text-align:center;vertical-align:middle;font-size:36px;
+				vertical-align:middle;display:inline;zoom:1;
+				border:none;}
+		</style>
+		<script type="text/javascript">
+			var opt = function(s,e){
+				document.write("<option></option>");
+				for (i=s; i<=e; i++){
+					document.write("<option>" + i + "</option>");	
+				}
+			}
+			var init= function(){ // よく使う要素を予め変数しとく等
+				
 
-ローリエの小枝 
-45 
-45 
+				ById = function(id){
+					obj = document.getElementById(id);
+					return obj;			
+				} 
+				getNum = function(id){
+					
+					num = Number(ById(id).value);
+					if(num > 0){
+						return num;
+					}else{
+						return 0;	
+					}
 
-ピンスティック 
-60 
-60 
+				}
 
-フラワースティック 
-60 
-90 
+				menu1 = ById("menu1");
+				menu2 = ById("menu2");
+				menu3 = ById("menu3");
 
-スライムステッキ 
-71 
-104 
+				a1 = ById("a1");
+				a2 = ById("a2");
+				a3 = ById("a3");
+				b1 = ById("b1");
+				b2 = ById("b2");
+				b3 = ById("b3");
+				c1 = ById("c1");
+				c2 = ById("c2");
+				c3 = ById("c3");
+				
+				// menu2
+				craftsman = {
+					"武器":[
+					{"name" : "片手剣"},
+					{"name" : "大剣"},
+					{"name" : "斧"},
+					{"name" : "槍"},
+					{"name" : "鞭"},
+					{"name" : "爪"},
+					{"name" : "ハンマー"},
+					{"name" : "短剣"},
+					{"name" : "ブーメラン"}
+					]  ,
+						"防具" :[
+						{"name" : "兜"},
+						{"name" : "鎧（上）"},
+						{"name" : "鎧（下）"},
+						{"name" : "小手"},
+						{"name" : "靴（鍛冶）"},
+						{"name" : "盾"}
+					]  ,
+						"さいほう":[
+						{"name" : "帽子"},
+						{"name" : "服（上）"},
+						{"name" : "服（下）"},
+						{"name" : "グローブ"},
+						{"name" : "靴（さいほう）"},
+						{"name" : "ぬいぐるみ"}
+					]  ,
+						"木工" :[
+						{"name" : "スティック"},
+						{"name" : "両手杖"},
+						{"name" : "棍"},
+						{"name" : "扇"},
+						{"name" : "弓"},
+						{"name" : "家具"}
+					] ,
+						"道具" :[
+						{"name" : "鍛冶ハンマー"},
+						{"name" : "木工刀"},
+						{"name" : "裁縫針"},
+						{"name" : "ツボ"},
+						{"name" : "ランプ"},
+						{"name" : "家具"}
+					]
+				};
 
-ツインクルタクト 
-82 
-115 
+				//menu3
+				recipe = {
+					"スティック" : [
+					{name:"ローリエの小枝",
+						"a1":"-","a2":45,"a3":"-",
+						"b1":"-","b2":45,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"やわらかい枝×"
+					},
+					{name:"ピンスティック",
+						"a1":"-","a2":60,"a3":"-",
+						"b1":"-","b2":60,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"フラワースティック",
+						"a1":"-","a2":60,"a3":"-",
+						"b1":"-","b2":90,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"スライムステッキ",
+						"a1":"-","a2":71,"a3":"-",
+						"b1":"-","b2":104,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"スライムゼリー×１ 枝×５"
+					},
+					{name:"ツインクルタクト",
+						"a1":"-","a2":82,"a3":"-",
+						"b1":"-","b2":115,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"ほしのかけら×１ 枝×５"
+					},
+					{name:"モーモンスティック",
+						"a1":"-","a2":93,"a3":"-",
+						"b1":"-","b2":126,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"ふさふさの毛皮×１ 枝×５"
+					},
+					{name:"フェザースティック",
+						"a1":"-","a2":104,"a3":"-",
+						"b1":"-","b2":137,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"ラブリースティック",
+						"a1":"-","a2":107,"a3":"-",
+						"b1":"-","b2":150,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"スラタワーステッキ",
+						"a1":"-","a2":118,"a3":"-",
+						"b1":"-","b2":161,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"まてきのスティック",
+						"a1":"-","a2":145,"a3":"-",
+						"b1":"-","b2":193,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"マジカルスティック",
+						"a1":"-","a2":188,"a3":"-",
+						"b1":"-","b2":145,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"マポレーナスティック",
+						"a1":"-","a2":155,"a3":"-",
+						"b1":"-","b2":209,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"ペロリンスティック",
+						"a1":"-","a2":172,"a3":"-",
+						"b1":"-","b2":226,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"パラソルステッキ",
+						"a1":"-","a2":215,"a3":"-",
+						"b1":"-","b2":215,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					}
+					],
+					"両手杖" : [
+					{name:"かしのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"まどうしの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"さばきの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"あまぐものつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"まふうじのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"うみなりのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"ようせいのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"いかづちの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"ピオラのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"ルーンスタッフ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"マグマの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					}
+					],
+					"扇" : [
+					{name:"くじゃくのおうぎ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"じょうぶな枝×３ にじいろの布×２　ひかりのいし×１",
+						"precision":" 数値精度：☆☆ b1（会）"
+					}
+					],
 
-モーモンスティック 
-93 
-126 
+					"帽子" : [
+					{name:"水のサークレット",
+						"a1":53  ,"a2":53  ,"a3":"-",
+						"b1":"86","b2":"81","b3":"-",
+						"c1":"-" ,"c2":"-" ,"c3":"-",
+						"mate":"じょうぶな枝×３ にじいろの布×２　ひかりのいし×１",
+						"precision":" 数値精度：☆☆ b1（会）"
+					}
+					]
+				};
 
-フェザースティック 
-104 
-137 
+			}
+var ref = function(target,arg){ // 減算更新処理
+	res = document.getElementById(target);
+	init = document.getElementById("I" + target);
+	if(arg > 0){ // 数字以外は処理しない
+		res.value = res.value - arg;
+	}
+	init.value = null;
+	//誤差合計
+	total = getNum("a1")
+		+ getNum("a2")
+		+ getNum("a3")
+		+ getNum("b1")
+		+ getNum("b2")
+		+ getNum("b3")
+		+ getNum("c1")
+		+ getNum("c2")
+		+ getNum("c3");
+	ById("total").innerHTML = "誤差" + total;
+}
 
-ラブリースティック 
-107 
-150 
+var Load_Recipe = function(id){
 
-スラタワースティック 
-118 
-161 
+	category = menu2.value;
+	//DB取得
+	obj = recipe[category];
 
-まてきのスティック 
-145 
-193 
+	for(var key in obj) {
+		if(obj[key].name === id){
+			//更新
+			a1.value = obj[key].a1;
+			a2.value = obj[key].a2;;
+			a3.value = obj[key].a3;;
+			b1.value = obj[key].b1;;
+			b2.value = obj[key].b2;;
+			b3.value = obj[key].b3;;
+			c1.value = obj[key].c1;;
+			c2.value = obj[key].c2;;
+			c3.value = obj[key].c3;;
+			document.getElementById("recipe").innerHTML = "名前：" + id 
+				+ "<br>素材：" + obj[key].mate
+				+ "<br>精度：" + obj[key].precision;
+		}
+	}
 
-まじかるスティっく 
-188 
-145 
+}
 
-マポレーナスティック 
-155 
-209 
+var Load_category = function(id){
+	obj = craftsman[id];
+	html = "<option>----</option>";
+	for(var key in obj) {
+		html += "<option value=" + obj[key].name  + ">" +obj[key] .name + "</option>";
+	}
+	menu2.innerHTML = html;
+}
 
-ペロリンスティック 
-172 
-226 
+var Load_item = function(id){
+	obj = recipe[id];
+	html = "<option>----</option>";
+	for(var key in obj) {
+		html += "<option value=" + obj[key].name  + ">" +obj[key] .name + "</option>";
+	}
+	menu3.innerHTML = html;
+}
+window.onload = init;
 
-パラソルステッキ 
-215 
-215
+$(function(){
+		$("input#a1").html("<b>55</b>");
+		})
 
-13: 名前が無い＠ただの名無しのようだ 2013/05/06(月) 17:12:08.89 ID:vAgAZSoo0
-かしのつえ 
-30 
-30 
-30 
-まどうしの杖 
-30 
-45 
-45 
-さばきの杖 
-45 
-60 
-45 
-あまぐものつえ 
-44 
-60 
-71 
-まふうじのつえ 
-49 
-66 
-82 
+	</script>
+</head>
+<body bgcolor="#333333" text="#ffffff" >
 
-うみなりのつえ 
-60 
-71 
-88 
+	<select id=menu1 onChange='Load_category(this.value)'>
+		<option>----</option>
+		<option value="武器">武器</option>
+		<option value="防具">防具</option>
+		<option value="道具">道具</option>
+		<option value="さいほう">さいほう</option>
+		<option value="木工">木工</option>
+	</select>
+	<select id=menu2 onChange='Load_item(this.value)'> </select>
+	<select id=menu3 onChange='Load_Recipe(this.value)'> </select>
 
-ようせいのつえ 
-71 
-77 
-93 
+	<div id= recipe></div>
+	<div style="float:left">
+		<h3>現在値 減算し0を目指す</h3>
+		<div id=data_sheet>
+			<input id=a1 class=cell>
+			<input id=a2 class=cell>
+			<input id=a3 class=cell>
+			<div style="clear:both;"></div>
+			<input id=b1 class=cell>
+			<input id=b2 class=cell>
+			<input id=b3 class=cell>
+			<div style="clear:both;"></div>
+			<input id=c1 class=cell>
+			<input id=c2 class=cell>
+			<input id=c3 class=cell>
+			<div style="clear:both;"></div>
+		</div>
+		<div id=total> 誤差　</div>
+	</div>
 
-いかづちの杖 
-84 
-96 
-108 
-
-ピオラのつえ 
-80 
-91 
-107 
-
-ルーンスタッフ　変化 
-118 
-86 
-97 
-
-マグマの杖　燃え木 
-108 
-145 
-121 
-
-せいれいのつえ 変化 
-107 
-118 
-140 
-
-まがんの杖　燃え木 
-162 
-150 
-133
-
-14: 名前が無い＠ただの名無しのようだ 2013/05/06(月) 17:12:40.11 ID:vAgAZSoo0
-ものほしざお 
-22 22 
-22 22 
-22 22 
-
-天秤棒 
-22 22 
-26 26 
-22 22 
-
-かしのこん 
-22 22 
-33 33 
-22 22 
-
-ぎょうしゃのこん 
-29 29 
-29 29 
-29 29 
-
-六角棒 
-29 29 
-40 40 
-29 29 
-
-えんぶのこん 
-33 33 
-44 44 
-33 33 
-
-セレモニーロッド 
-33 33 
-49 49 
-38 38 
-
-スパイクロッド 
-32 32 
-53 53 
-43 43 
-
-まどろみのこん 
-37 37 
-58 58 
-43 43 
-
-クラッシュロッド 変化 
-43 43 
-58 58 
-48 48 
-
-レイニーロッド　変化 
-48 48 
-53 53 
-64 64 
-
-らせつのこん 燃え木 
-60 60 
-84 84 
-60 60
-
-15: 名前が無い＠ただの名無しのようだ 2013/05/06(月) 17:13:24.52 ID:vAgAZSoo0
-白木の扇 
-30 30 
-30 30 
-
-羽の扇 
-25 25 
-40 40 
-
-バトルファン 
-44 44 
-33 33 
-
-てつの扇 
-38 38 
-49 49 
-
-
-かめの扇 
-44 44 
-55 55 
-
-七星の扇 
-55 55 
-66 66 
-
-とりの扇 
-49 49 
-60 60 
-
-猫の扇 
-60 60 
-71 71 
-
-孔雀の扇 
-53 53 
-86 86 
-
-蛇の扇 燃え木 
-78 78 
-90 90 
-
-星の扇 変化 
-75 75 
-91 91 
-
-マジックファン 燃え木 
-90 90 
-114 114
-
-16: 名前が無い＠ただの名無しのようだ 2013/05/06(月) 17:13:55.45 ID:vAgAZSoo0
-青竹の弓 
-22 22 
-33 
-22 22 
-
-若木の弓 
-33 22 
-22 
-33 22 
-
-古木の弓 
-33 33 
-22 
-33 33 
-
-したんのゆみ 
-45 33 
-45 
-45 33 
-
-ロングボウ 
-33 33 
-45 
-33 33 
-
-狩人の弓 
-55 33 
-45 
-55 33 
-
-こあくまのゆみ 
-45 60 
-33 
-60 45 
-
-エロスの弓　変化 
-53 44 
-58 
-53 44 
-
-かぜきりの弓　燃え木 
-66 49 
-82 
-66 49 
-
-ゆうわくの弓　変化 
-68 49 
-64 
-68 49 
-
-白鳥の弓　変化 
-68 58 
-78 
-58 68 
-
-月光の弓 変化 
-64 78 
-78 
-64 78
-
+	<div style="float:left">
+		<h3>INPUT</h3>
+		<div id=input_tbl>
+			<select id=Ia1 class=cell onChange='ref("a1",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ia2 class=cell onChange='ref("a2",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ia3 class=cell onChange='ref("a3",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<div style="clear:both;"></div>
+			<select id=Ib1 class=cell onChange='ref("b1",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ib2 class=cell onChange='ref("b2",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ib3 class=cell onChange='ref("b3",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<div style="clear:both;"></div>
+			<select id=Ic1 class=cell onChange='ref("c1",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ic2 class=cell onChange='ref("c2",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ic3 class=cell onChange='ref("c3",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<div style="clear:both;"></div>
+		</div>
+	</body>
+</html>
