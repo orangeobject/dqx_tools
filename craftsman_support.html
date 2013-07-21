@@ -1,7 +1,6 @@
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>職人補助ツール</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -12,6 +11,12 @@
 				border:none;}
 		</style>
 		<script type="text/javascript">
+			var opt = function(s,e){
+				document.write("<option></option>");
+				for (i=s; i<=e; i++){
+					document.write("<option>" + i + "</option>");	
+				}
+			}
 			var init= function(){ // よく使う要素を予め変数しとく等
 				
 
@@ -94,28 +99,180 @@
 				//menu3
 				recipe = {
 					"スティック" : [
-					{name:"マポレーナ",
-						"a1":30,"a2":30,"a3":30,
-						"b1":30,"b2":30,"b3":30,
-						"c1":30,"c2":30,"c3":30,
+					{name:"ローリエの小枝",
+						"a1":"-","a2":45,"a3":"-",
+						"b1":"-","b2":45,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"やわらかい枝×"
+					},
+					{name:"ピンスティック",
+						"a1":"-","a2":60,"a3":"-",
+						"b1":"-","b2":60,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
 						"mate":"毛皮×３ 枝×５"
 					},
-					{name:"モーモン",
-						"a1":30,"a2":30,"a3":30,
-						"b1":30,"b2":30,"b3":30,
-						"c1":30,"c2":30,"c3":30,
-						"mate":"ふさふさの毛皮×１ じょうぶな枝×５"
+					{name:"フラワースティック",
+						"a1":"-","a2":60,"a3":"-",
+						"b1":"-","b2":90,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"スライムステッキ",
+						"a1":"-","a2":71,"a3":"-",
+						"b1":"-","b2":104,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"スライムゼリー×１ 枝×５"
+					},
+					{name:"ツインクルタクト",
+						"a1":"-","a2":82,"a3":"-",
+						"b1":"-","b2":115,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"ほしのかけら×１ 枝×５"
+					},
+					{name:"モーモンスティック",
+						"a1":"-","a2":93,"a3":"-",
+						"b1":"-","b2":126,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"ふさふさの毛皮×１ 枝×５"
+					},
+					{name:"フェザースティック",
+						"a1":"-","a2":104,"a3":"-",
+						"b1":"-","b2":137,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"ラブリースティック",
+						"a1":"-","a2":107,"a3":"-",
+						"b1":"-","b2":150,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"スラタワーステッキ",
+						"a1":"-","a2":118,"a3":"-",
+						"b1":"-","b2":161,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"まてきのスティック",
+						"a1":"-","a2":145,"a3":"-",
+						"b1":"-","b2":193,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"マジカルスティック",
+						"a1":"-","a2":188,"a3":"-",
+						"b1":"-","b2":145,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"マポレーナスティック",
+						"a1":"-","a2":155,"a3":"-",
+						"b1":"-","b2":209,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"ペロリンスティック",
+						"a1":"-","a2":172,"a3":"-",
+						"b1":"-","b2":226,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
+					},
+					{name:"パラソルステッキ",
+						"a1":"-","a2":215,"a3":"-",
+						"b1":"-","b2":215,"b3":"-",
+						"c1":"-","c2":"-","c3":"-",
+						"mate":"毛皮×３ 枝×５"
 					}
+					],
+					"両手杖" : [
+					{name:"かしのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"まどうしの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"さばきの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"あまぐものつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"まふうじのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"うみなりのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"ようせいのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"いかづちの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"ピオラのつえ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"ルーンスタッフ",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
+					{name:"マグマの杖",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
+						"mate":"",
+						"precision":""
+					},
 					],
 					"扇" : [
 					{name:"くじゃくのおうぎ",
-						"a1":53  ,"a2":53  ,"a3":"-",
-						"b1":"86","b2":"81","b3":"-",
-						"c1":"-" ,"c2":"-" ,"c3":"-",
+						"a1":"-","a2":53  ,"a3":"-",
+						"b1":"-","b2":81,"b3":"-",
+						"c1":"-","c2":0 ,"c3":"-",
 						"mate":"じょうぶな枝×３ にじいろの布×２　ひかりのいし×１",
 						"precision":" 数値精度：☆☆ b1（会）"
 					}
 					],
+
 					"帽子" : [
 					{name:"水のサークレット",
 						"a1":53  ,"a2":53  ,"a3":"-",
@@ -235,17 +392,35 @@ $(function(){
 	<div style="float:left">
 		<h3>INPUT</h3>
 		<div id=input_tbl>
-			<input id=Ia1 class=cell onChange='ref("a1",this.value);'>
-			<input id=Ia2 class=cell onChange='ref("a2",this.value);'>
-			<input id=Ia3 class=cell onChange='ref("a3",this.value);'>
+			<select id=Ia1 class=cell onChange='ref("a1",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ia2 class=cell onChange='ref("a2",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ia3 class=cell onChange='ref("a3",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
 			<div style="clear:both;"></div>
-			<input id=Ib1 class=cell onChange='ref("b1",this.value);'>
-			<input id=Ib2 class=cell onChange='ref("b2",this.value);'>
-			<input id=Ib3 class=cell onChange='ref("b3",this.value);'>
+			<select id=Ib1 class=cell onChange='ref("b1",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ib2 class=cell onChange='ref("b2",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ib3 class=cell onChange='ref("b3",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
 			<div style="clear:both;"></div>
-			<input id=Ic1 class=cell onChange='ref("c1",this.value);'>
-			<input id=Ic2 class=cell onChange='ref("c2",this.value);'>
-			<input id=Ic3 class=cell onChange='ref("c3",this.value);'>
+			<select id=Ic1 class=cell onChange='ref("c1",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ic2 class=cell onChange='ref("c2",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
+			<select id=Ic3 class=cell onChange='ref("c3",this.value);'>
+				<script>opt(1,39);</script>
+			</select>
 			<div style="clear:both;"></div>
 		</div>
 	</body>
