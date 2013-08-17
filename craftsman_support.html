@@ -1,12 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang=ja>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="UTF-8" />
 		<title>職人補助ツール</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<style type=text/css>
 			body{background-color:#333;color:#fff;width:640px;height:960px;}
-			.cell{background-color:white;width:100px;height:100px;color:gray;margin:5px;
+			.cell{background-color:white;width:80px;height:80px;color:gray;margin:5px;
 				float:left;text-align:center;vertical-align:middle;font-size:36px;
 				vertical-align:middle;display:inline;zoom:1;
 				border:none;}
@@ -17,7 +17,7 @@
 				document.write("<option></option>");
 				for (i=s; i<=e; i++){
 					if(i === 0){
-						document.write("<option selected=selected></option>");	
+						document.write("<option value=0 selected=selected></option>");	
 					}else{
 						document.write("<option value=" + i + ">" + i + "</option>");	
 					}
@@ -115,7 +115,7 @@ var init= function(){ // よく使う要素を予め変数しとく等
 			"a1":"-","a2":60,"a3":"-",
 			"b1":"-","b2":60,"b3":"-",
 			"c1":"-","c2":"-","c3":"-",
-			"mate":"毛皮×３ 枝×５"
+			"mate":"てっこうせき×１ やわらかい枝×５"
 		},
 		{name:"フラワースティック",
 			"a1":"-","a2":60,"a3":"-",
@@ -139,7 +139,7 @@ var init= function(){ // よく使う要素を予め変数しとく等
 			"a1":"-","a2":93,"a3":"-",
 			"b1":"-","b2":126,"b3":"-",
 			"c1":"-","c2":"-","c3":"-",
-			"mate":"ふさふさの毛皮×１ 枝×５"
+			"mate":"ふさふさの毛皮×１ じょうぶな枝×５"
 		},
 		{name:"フェザースティック",
 			"a1":"-","a2":104,"a3":"-",
@@ -175,7 +175,7 @@ var init= function(){ // よく使う要素を予め変数しとく等
 			"a1":"-","a2":155,"a3":"-",
 			"b1":"-","b2":209,"b3":"-",
 			"c1":"-","c2":"-","c3":"-",
-			"mate":"毛皮×３ 枝×５"
+			"mate":"ふさふさの毛皮×３ 枝×５"
 		},
 		{name:"ペロリンスティック",
 			"a1":"-","a2":172,"a3":"-",
@@ -195,14 +195,14 @@ var init= function(){ // よく使う要素を予め変数しとく等
 				"a1":"-","a2":30,"a3":"-",
 				"b1":"-","b2":30,"b3":"-",
 				"c1":"-","c2":30,"c3":"-",
-				"mate":"",
+				"mate":"やわらかい枝",
 				"precision":""
 			},
 			{name:"まどうしの杖",
 				"a1":"-","a2":30,"a3":"-",
 				"b1":"-","b2":45,"b3":"-",
 				"c1":"-","c2":45,"c3":"-",
-				"mate":"",
+				"mate":"やわらかい枝／ホカホカストーン",
 				"precision":""
 			},
 			{name:"さばきの杖",
@@ -395,7 +395,7 @@ var init= function(){ // よく使う要素を予め変数しとく等
 				"a1":38,"a2":38,"a3":"-",
 				"b1":49,"b2":49,"b3":"-",
 				"c1":"-","c2":"-","c3":"-",
-				"mate":"",
+				"mate":"てっこうせき×1／やわらかい枝",
 				"precision":""
 			},
 			{name:"かめのおうぎ",
@@ -416,28 +416,28 @@ var init= function(){ // よく使う要素を予め変数しとく等
 				"a1":49,"a2":49,"a3":"-",
 				"b1":60,"b2":60,"b3":"-",
 				"c1":"-","c2":"-","c3":"-",
-				"mate":"",
+				"mate":"じょうぶな枝／ようがんのかけら×1",
 				"precision":""
 			},
 			{name:"ねこのおうぎ",
 				"a1":60,"a2":60,"a3":"-",
 				"b1":71,"b2":71,"b3":"-",
 				"c1":"-","c2":"-","c3":"-",
-				"mate":"",
+				"mate":"じょうぶな枝／こおりのけっしょう／ねこずな",
 				"precision":""
 			},
 			{name:"くじゃくのおうぎ",
 				"a1":53,"a2":53,"a3":"-",
 				"b1":86,"b2":86,"b3":"-",
 				"c1":"-","c2":"-","c3":"-",
-				"mate":"",
+				"mate":"しなやかな枝／にじいろのぬの",
 				"precision":""
 			},
 			{name:"へびのおうぎ",
 				"a1":78,"a2":78,"a3":"-",
 				"b1":86,"b2":86,"b3":"-",
 				"c1":"-","c2":"-","c3":"-",
-				"mate":"",
+				"mate":"しなやかな枝／へびのぬけがら／いかづちのたま",
 				"precision":""
 			},
 			{name:"ほしのおうぎ",
@@ -460,14 +460,14 @@ var init= function(){ // よく使う要素を予め変数しとく等
 				"a1":22,"a2":22,"a3":"-",
 				"b1":33,"b2":"-","b3":"-",
 				"c1":22,"c2":22,"c3":"-",
-				"mate":"",
+				"mate":"やわらかい枝",
 				"precision":""
 			},
 			{name:"若木の弓",
 				"a1":33,"a2":22,"a3":"-",
 				"b1":22,"b2":"-","b3":"-",
 				"c1":33,"c2":22,"c3":"-",
-				"mate":"",
+				"mate":"やわらかい枝／じょうぶな枝",
 				"precision":""
 			},
 			{name:"古木の弓",
@@ -481,7 +481,7 @@ var init= function(){ // よく使う要素を予め変数しとく等
 				"a1":45,"a2":33,"a3":"-",
 				"b1":45,"b2":"-","b3":"-",
 				"c1":45,"c2":33,"c3":"-",
-				"mate":"",
+				"mate":"じょうぶな枝／よごれたほうたい",
 				"precision":""
 			},
 			{name:"ロングボウ",
@@ -559,7 +559,7 @@ var ref = function(target,arg){ // 減算更新処理
 	if(arg > 0){ // 数字以外は処理しない
 		res.value = res.value - arg;
 	}
-	init.value = null;
+	init.value = 0;
 	//誤差合計
 	total = getNum("a1")
 		+ getNum("a2")
@@ -642,7 +642,7 @@ $(function(){
 	<select id=menu3 class=recipes onChange='Load_Recipe(this.value)'> </select>
 
 	<div id= recipe></div>
-	<div>
+	<div style="float:left">
 		<h3>現在値 減算し0を目指す</h3>
 		<div id=data_sheet>
 			<input id=a1 class=cell>
@@ -661,7 +661,7 @@ $(function(){
 		<div id=total> 誤差　</div>
 	</div>
 
-	<div id=input_table>
+	<div id=input_table style="float:left;">
 		<h3>INPUT</h3>
 		<div id=input_tbl>
 			<select id=Ia1 class=cell onChange='ref("a1",this.value);'>
