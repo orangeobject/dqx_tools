@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,6 +6,9 @@
 <title></title>
 <meta name="keywords" content="">
 <meta name="description" content="">
+<style>
+	.li{color:#ddd;border-radius:10px;borde-width: 3px;border-style:solid;border-color:#ccc;background-color:#333;padding: 10px;}
+	</style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type = text/javascript>
 function getRequest() {
@@ -27,12 +31,12 @@ if(get['value']){
 }else{
 	base = 1500;
 }
+
 var chart = function(){
-	t_ch = "<table>";
+	var t_ch = "";
 	for(i=1;30>=i;i++){
-		t_ch = t_ch + "<tr><td>" + i + "</td><td>" + i * base + "</td></tr>";
+		t_ch = t_ch + "<div class=li>" + i + " | " + i * base + "</div>";
 	}
-	t_ch = t_ch + "</table>";
 	document.write(t_ch);
 
 }
