@@ -1,0 +1,40 @@
+
+<!doctype html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+	var prediction = function(){
+		var avr = (Number($("#p1").val()) 
+				+ Number($("#p2").val()) 
+				+ Number($("#p3").val()) 
+				+ Number($("#p4").val())) / 4;
+		var upper = avr + 3;
+		var lower = avr - 3;
+		$("#prediction").html(lower + "～" + upper);
+
+	}
+
+</script>
+<style>
+</style>
+</head>
+<body>
+<input id=p1><br>
+<input id=p2><br>
+<input id=p3><br>
+<input id=p4><br>
+<input type=button onclick="prediction();" value=click> 
+<div id=prediction>  </div>
+</body>
+</html>
+
