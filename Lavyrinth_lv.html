@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -13,28 +12,46 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
-	var prediction = function(){
-		var avr = (Number($("#p1").val()) 
-				+ Number($("#p2").val()) 
-				+ Number($("#p3").val()) 
-				+ Number($("#p4").val())) / 4;
-		var upper = avr + 3;
-		var lower = avr - 3;
-		$("#prediction").html(lower + "～" + upper);
+var prediction = function(){
+	var avr = (Number($("#p1").val()) 
+			+ Number($("#p2").val()) 
+			+ Number($("#p3").val()) 
+			+ Number($("#p4").val())) / 4;
+	var upper = avr + 3;
+	var lower = avr - 3;
+	$("#prediction").html(lower + "～" + upper);
 
-	}
-
+}
+$(function() {
+		$('.fm').change(function(){
+			var txt  = $(this).val();
+			var han = txt.replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(s){return String.fromCharCode(s.charCodeAt(0)-0xFEE0)});
+			$(this).val(han);
+			});
+		});
 </script>
 <style>
 </style>
 </head>
 <body>
-<input id=p1><br>
-<input id=p2><br>
-<input id=p3><br>
-<input id=p4><br>
+<input id=p1 class=fm><br>
+<input id=p2 class=fm><br>
+<input id=p3 class=fm><br>
+<input id=p4 class=fm><br>
 <input type=button onclick="prediction();" value=click> 
 <div id=prediction>  </div>
+
+<li>黒竜丸	～35
+<li>バトルシェイカー	25？～45
+<li>ハヌマーン	33？～
+<li>バリクナジャ	41？～
+<li>キングレオ	49？～
+<li>ジャミラス	56？～
+<li>トロルバッコス	63？～	
+<li>ギーグハンマー	68？～	
+<li>ドラゴン・ウー	68？～
+
+
 </body>
 </html>
 
